@@ -22,6 +22,35 @@ export default {
               TabTwoScreen: 'two',
             },
           },
+
+          Home:{
+            screens:{
+              Home:'home'
+            },
+          },
+
+          Carrinho:{
+            screens:{
+              Carrinho:'carrinho'
+            },
+          },
+
+
+          Cadastro:{
+            screens:{
+              Cadastro:'cadastro'
+            },
+          },
+
+          Perfil:{
+            screens:{
+              Perfil:'perfil'
+            },
+          },
+
+          
+
+
         },
       },
       NotFound: '*',
