@@ -1,8 +1,25 @@
 import * as React from "react";
-import {View,Text} from "react-native";
+import {View,Text,Image} from "react-native";
 import {ipserver} from "../config/settings";
+import {styles} from '../css/Styles';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import Detalhes from "./Detalhes";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
+const Stack = createStackNavigator();
 export default function Home(){
+return(
+    <NavigationContainer independent={true}>
+        <Stack.Navigator>
+            <Stack.Screen name="ListarProdutos" component={ListarProdutos}/>
+            <Stack.Screen name="Detalhes" component={Detalhes}/>
+        </Stack.Navigator>
+    </NavigationContainer>
+)
+}
+
+function ListarProdutos({navigation}){
 // Vamos construir uma estrutura para carregar
 //os dados sobre os produtos que virão do banco
 //de dados. Iremos criar um array(lista) com o 
@@ -21,18 +38,29 @@ React.useEffect(()=>{
 },[])
 
     return(
-        <View>
-            <Text> Tela Home</Text>
-
+        <View style={styles.container}>
+        <Text> Tela Home</Text>
+            <View style={styles.display}>
             {
                 produtos.map((item,ix)=>(
-                    <View key={item._id}>
-                        <Text>{item.foto}</Text>
-                        <Text>{item.nomeproduto}</Text>
-                        <Text>{item.preco}</Text>
+                   
+                   <TouchableOpacity onPress={()=>{
+                       navigation.navigate("Detalhes",{idproduto:`${item._id}`})
+                   }} style={styles.acesso}>
+
+                   <View key={item._id} style={styles.cxproduto}>
+                        
+                        <Image source={{uri:`${item.foto}`}} style={styles.foto}/>
+                        
+                        <Text style={styles.nomeproduto}> {item.nomeproduto}</Text>
+                        
+                        <Text style={styles.preco}> {item.preco}</Text>
+
                     </View>
+                    </TouchableOpacity>
                 ))
             }
+            </View>
 
         </View>
     );
