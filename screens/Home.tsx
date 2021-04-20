@@ -20,10 +20,20 @@ React.useEffect(()=>{
 
 },[])
 
-
     return(
         <View>
             <Text> Tela Home</Text>
+
+            {
+                produtos.map((item,ix)=>(
+                    <View key={item._id}>
+                        <Text>{item.foto}</Text>
+                        <Text>{item.nomeproduto}</Text>
+                        <Text>{item.preco}</Text>
+                    </View>
+                ))
+            }
+
         </View>
     );
 }
