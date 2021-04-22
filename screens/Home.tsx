@@ -12,8 +12,8 @@ export default function Home(){
 return(
     <NavigationContainer independent={true}>
         <Stack.Navigator>
-            <Stack.Screen name="ListarProdutos" component={ListarProdutos}/>
-            <Stack.Screen name="Detalhes" component={Detalhes}/>
+            <Stack.Screen name="ListarProdutos" component={ListarProdutos} options={{headerShown:false}}/>
+            <Stack.Screen name="Detalhes" component={Detalhes} options={{headerShown:false}}/>
         </Stack.Navigator>
     </NavigationContainer>
 )
@@ -39,7 +39,6 @@ React.useEffect(()=>{
 
     return(
         <View style={styles.container}>
-        <Text> Tela Home</Text>
             <View style={styles.display}>
             {
                 produtos.map((item,ix)=>(

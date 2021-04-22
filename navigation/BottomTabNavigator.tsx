@@ -108,7 +108,7 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="Home"
         component={Home}
-        options={{ headerTitle: 'Home' }}
+        options={{ headerTitle: 'Brechó',headerTitleAlign:'center' }}
       />
     </HomeStack.Navigator>
   );
@@ -122,7 +122,7 @@ function CadastroNavigator() {
       <CadastroStack.Screen
         name="Cadastro"
         component={Cadastro}
-        options={{ headerTitle: 'Cadastro' }}
+        options={{ headerTitle: 'Brechó | Cadastro',headerTitleAlign:'center'  }}
       />
     </CadastroStack.Navigator>
   );
@@ -137,7 +137,7 @@ function CarrinhoNavigator() {
       <CarrinhoStack.Screen
         name="Carrinho"
         component={Carrinho}
-        options={{ headerTitle: 'Carrinho' }}
+        options={{ headerTitle: 'Brechó | Carrinho',headerTitleAlign:'center'  }}
       />
     </CarrinhoStack.Navigator>
   );
@@ -152,7 +152,7 @@ function PerfilNavigator() {
       <PerfilStack.Screen
         name="Perfil"
         component={Perfil}
-        options={{ headerTitle: 'Perfil' }}
+        options={{ headerTitle: 'Brechó | Perfil',headerTitleAlign:'center'  }}
       />
     </PerfilStack.Navigator>
   );
