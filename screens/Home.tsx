@@ -1,5 +1,5 @@
 import * as React from "react";
-import {View,Text,Image} from "react-native";
+import {View,Text,Image, ScrollView} from "react-native";
 import {ipserver} from "../config/settings";
 import {styles} from '../css/Styles';
 import {NavigationContainer} from '@react-navigation/native';
@@ -35,19 +35,22 @@ React.useEffect(()=>{
     .then((resultado)=>setProdutos(resultado.rs))
     .catch((erro)=>console.error(`Erro ao tentar carregar os produtos->${erro}`));
 
-},[])
+})
 
     return(
         <View style={styles.container}>
+
+            <ScrollView horizontal={false}>
+
             <View style={styles.display}>
             {
                 produtos.map((item,ix)=>(
                    
-                   <TouchableOpacity onPress={()=>{
+                   <TouchableOpacity  key={item._id} onPress={()=>{
                        navigation.navigate("Detalhes",{idproduto:`${item._id}`})
                    }} style={styles.acesso}>
 
-                   <View key={item._id} style={styles.cxproduto}>
+                   <View style={styles.cxproduto}>
                         
                         <Image source={{uri:`${item.foto}`}} style={styles.foto}/>
                         
@@ -60,7 +63,7 @@ React.useEffect(()=>{
                 ))
             }
             </View>
-
+            </ScrollView>
         </View>
     );
 }
