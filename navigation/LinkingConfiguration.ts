@@ -48,6 +48,12 @@ export default {
             },
           },
 
+          Login:{
+            screens:{
+              Login:'login'
+            },
+          },
+
           
 
 

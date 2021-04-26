@@ -15,6 +15,7 @@ export type BottomTabParamList = {
   Carrinho:undefined;
   Cadastro:undefined;
   Perfil:undefined;
+  Login:undefined;
 };
 
 export type HomeParamList = {
@@ -39,3 +40,10 @@ export type TabOneParamList = {
 export type TabTwoParamList = {
   TabTwoScreen: undefined;
 };
+
+
+export type LoginParamList = {
+  Login: undefined;
+};
+
+
