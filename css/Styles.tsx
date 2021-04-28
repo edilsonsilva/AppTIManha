@@ -75,5 +75,16 @@ export const styles = StyleSheet.create({
         shadowOpacity:0.9,
         shadowRadius:5,
         elevation:10
+    },
+    imgPerfil:{
+        width:200,
+        height:200,
+        marginLeft:'auto',
+        marginRight:'auto',
+        marginTop:50,
+        marginBottom:50,
+        resizeMode:'cover',
+        borderRadius:50
+
     }
 })
