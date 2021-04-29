@@ -7,6 +7,11 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Detalhes from "./Detalhes";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+import * as SQLite from "expo-sqlite";
+import Login from "./Login";
+
+const db = SQLite.openDatabase("brecho.banco");
+
 const Stack = createStackNavigator();
 export default function Home(){
 return(
@@ -14,6 +19,7 @@ return(
         <Stack.Navigator>
             <Stack.Screen name="ListarProdutos" component={ListarProdutos} options={{headerShown:false}}/>
             <Stack.Screen name="Detalhes" component={Detalhes} options={{headerShown:false}}/>
+            <Stack.Screen name="Login" component={Login} options={{headerShown:false}}/>
         </Stack.Navigator>
     </NavigationContainer>
 )
@@ -30,12 +36,27 @@ const[produtos,setProdutos] = React.useState([]);
 // ao abrir a tela de home. Ele será responsável
 // por carregar os dados do servidor
 React.useEffect(()=>{
-    fetch(`${ipserver}produto/listar`)
-    .then((response)=>response.json())
-    .then((resultado)=>setProdutos(resultado.rs))
-    .catch((erro)=>console.error(`Erro ao tentar carregar os produtos->${erro}`));
 
-})
+    db.transaction((trs)=>{
+        trs.executeSql(
+            "select * from perfil",[],(_,{rows:{_array}})=>{
+                if(_array=="" || _array==null){
+                    navigation.navigate("Login");
+                }
+                else{
+                    
+                    fetch(`${ipserver}produto/listar`)
+                    .then((response)=>response.json())
+                    .then((resultado)=>setProdutos(resultado.rs))
+                    .catch((erro)=>console.error(`Erro ao tentar carregar os produtos->${erro}`));
+
+                }
+                
+            }
+        )
+    })
+
+},[])
 
     return(
         <View style={styles.container}>

@@ -1,1 +1,1 @@
-export const ipserver = "http://192.168.0.9:5000/";
+export const ipserver = "http://192.168.0.2:5000/";
